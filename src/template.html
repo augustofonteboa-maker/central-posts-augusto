@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f0c33">
+<meta name="robots" content="noindex">
+<title>Central de posts · Augusto Fonte</title>
+<link rel="icon" href="assets/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<style>
+@font-face{font-family:"PolySans";src:url(assets/fonts/polysans-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"PolySans";src:url(assets/fonts/polysans-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"PolySans";src:url(assets/fonts/polysans-800.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{--night:#1f0c33;--night2:#160824;--night3:#2a1245;--violet:#af5eff;--lilac:#d9b3ff;--paper:#faf5ff;--mute:#b9a6d1;--mint:#5be3b5;--pink:#ff6fae;--line:rgba(217,179,255,.16);--f:"PolySans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--night2);color:var(--paper);font-family:var(--f);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(120% 60% at 100% 0%,rgba(175,94,255,.22),transparent 60%),radial-gradient(90% 50% at 0% 30%,rgba(255,111,174,.08),transparent 60%),var(--night2);min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-right))}
+header.top{position:sticky;top:0;z-index:20;background:rgba(22,8,36,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) 16px 10px}
+.top-in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top img{height:26px;display:block}
+.prog{font-size:13px;color:var(--mute);text-align:right;line-height:1.25}
+.prog b{color:var(--paper);font-weight:800}
+.bar{height:3px;background:var(--night3);border-radius:9px;margin-top:6px;overflow:hidden;width:120px;margin-left:auto}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--pink));width:0;transition:width .4s}
+.hero{padding:28px 0 6px}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);font-weight:600}
+h1{font-size:34px;line-height:1.05;margin:8px 0 10px;font-weight:800;letter-spacing:-.02em}
+h1 span{color:var(--violet)}
+.lead{color:var(--mute);margin:0 0 16px}
+.ab{display:flex;background:var(--night3);border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px;margin:4px 0 10px}
+.ab button{flex:1;border:0;background:transparent;color:var(--mute);font:600 14px/1.2 var(--f);padding:10px 8px;border-radius:10px;cursor:pointer}
+.ab button.on{background:var(--violet);color:var(--night2)}
+.ab-note{font-size:13px;color:var(--mute);margin:0 0 6px}
+details.how{background:rgba(42,18,69,.6);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:14px 0 4px;font-size:14px;color:var(--mute)}
+details.how summary{color:var(--paper);font-weight:600;cursor:pointer}
+details.how ol{margin:8px 0 0;padding-left:18px}
+.card{background:linear-gradient(180deg,rgba(42,18,69,.92),rgba(31,12,51,.92));border:1px solid var(--line);border-radius:22px;margin:18px 0;overflow:hidden}
+.card.done{border-color:rgba(91,227,181,.45)}
+.ch{display:flex;gap:12px;align-items:center;padding:16px 16px 12px}
+.num{flex:none;width:42px;height:42px;border-radius:12px;background:var(--violet);color:var(--night2);display:grid;place-items:center;font-weight:800;font-size:15px}
+.card.done .num{background:var(--mint)}
+.ch h2{font-size:18px;line-height:1.2;margin:0;font-weight:800}
+.meta{font-size:12.5px;color:var(--mute);margin-top:2px}
+.dica{margin:0 16px 12px;font-size:13px;color:var(--lilac);background:rgba(175,94,255,.1);border-radius:10px;padding:8px 10px}
+.vid{position:relative;margin:0 16px;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:9/16;max-height:62vh}
+.vid video,.vid img{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.vid button.play{position:absolute;inset:0;border:0;background:transparent;cursor:pointer}
+.vid button.play::after{content:"";position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(175,94,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%23160824'/%3E%3C/svg%3E") 55% 50%/30px no-repeat;box-shadow:0 8px 30px rgba(175,94,255,.5)}
+.dl{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 16px 4px;padding:14px;border-radius:14px;background:var(--paper);color:var(--night);font-weight:800;text-decoration:none;font-size:15px}
+.size{display:block;text-align:center;font-size:12px;color:var(--mute);margin-bottom:6px}
+.blk{margin:12px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(22,8,36,.55)}
+.bh{display:flex;justify-content:space-between;align-items:center;padding:10px 12px 0;gap:8px}
+.lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--lilac);font-weight:600}
+.cp{border:0;background:var(--violet);color:var(--night2);font:800 13px/1 var(--f);padding:9px 14px;border-radius:99px;cursor:pointer;white-space:nowrap}
+.cp.ok{background:var(--mint)}
+.txt{white-space:pre-wrap;word-break:break-word;padding:8px 12px 12px;font-size:14.5px;color:var(--paper);max-height:220px;overflow:auto}
+.txt .tg{color:var(--lilac)}
+.yt{border-top:1px dashed var(--line)}
+.posted{display:flex;gap:8px;flex-wrap:wrap;margin:6px 16px 16px}
+.posted label{flex:1;min-width:92px;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);border-radius:12px;padding:10px 6px;font-size:13px;color:var(--mute);cursor:pointer;user-select:none}
+.posted input{accent-color:var(--mint);width:16px;height:16px}
+.posted label.on{border-color:rgba(91,227,181,.5);color:var(--mint);background:rgba(91,227,181,.08)}
+.badge{display:inline-block;font-size:11px;font-weight:800;padding:2px 7px;border-radius:99px;background:var(--pink);color:var(--night2);margin-left:6px;vertical-align:2px}
+footer{text-align:center;color:var(--mute);font-size:12.5px;padding:24px 0 8px}
+footer img{width:30px;opacity:.9;display:block;margin:0 auto 8px}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;background:var(--mint);color:var(--night2);font-weight:800;padding:12px 18px;border-radius:99px;transition:.25s;z-index:40;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <img src="assets/logo.png" alt="Augusto Fonte">
+  <div class="prog"><b id="pc">0</b> de <b id="pt">0</b> posts publicados<div class="bar"><i id="pb"></i></div></div>
+</div></header>
+<div class="wrap">
+  <section class="hero">
+    <div class="kicker">Central de posts · @_augustofonte</div>
+    <h1>Fábrica de Histórias: <span>O Pequeno Príncipe</span></h1>
+    <p class="lead">Salve o vídeo, copie a legenda e poste. Cada post tem duas versões de texto para o teste A/B.</p>
+    <div class="ab" role="tablist">
+      <button id="abA" class="on" type="button">A · Como eu fiz (aula)</button>
+      <button id="abB" type="button">B · Contando a história</button>
+    </div>
+    <p class="ab-note" id="abNote"></p>
+    <details class="how"><summary>Como salvar o vídeo no celular</summary>
+      <ol>
+        <li><b>iPhone:</b> toque em Salvar vídeo → Baixar → abra o ícone de downloads (seta azul) → toque no vídeo → Compartilhar → Salvar vídeo. Ele vai para a galeria.</li>
+        <li><b>Android:</b> toque em Salvar vídeo. O arquivo vai para Downloads e aparece na galeria.</li>
+        <li>Copie a legenda, abra o app, escolha o vídeo e cole.</li>
+        <li>Depois de postar, marque onde postou. Fica salvo neste celular.</li>
+      </ol>
+    </details>
+  </section>
+  <main id="lista"></main>
+  <footer><img src="assets/icone.svg" alt="">Augusto Fonte · central de posts</footer>
+</div>
+<div class="toast" id="toast">Copiado</div>
+<script>
+const D=__DATA__;
+const $=s=>document.querySelector(s);
+const LS="central-af-v1";
+const st=JSON.parse(localStorage.getItem(LS)||'{"ab":"A","posted":{}}');
+const save=()=>localStorage.setItem(LS,JSON.stringify(st));
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const PL=["Instagram","TikTok","YouTube"];
+function ver(p){return p[st.ab]||p.A}
+function social(p){const v=ver(p);return v.social+(p.cred?"\n\n"+D.cred:"")+"\n\n"+v.tags.join(" ")}
+function render(){
+  $("#abA").classList.toggle("on",st.ab==="A");$("#abB").classList.toggle("on",st.ab==="B");
+  $("#abNote").textContent=st.ab==="A"?"Versão A: mostra que foi feito com IA e chama para a aula (comenta HISTÓRIA).":"Versão B: só conta a história, sem falar de ferramenta.";
+  $("#lista").innerHTML=D.posts.map(p=>{
+    const v=ver(p),soB=!p.B&&st.ab==="B";
+    const ps=st.posted[p.id]||{};
+    const done=PL.some(k=>ps[k]);
+    return `<article class="card${done?" done":""}" id="${p.id}">
+      <div class="ch"><div class="num">${p.num}</div><div><h2>${esc(p.nome)}${soB?'<span class="badge">só versão A</span>':""}</h2><div class="meta">${p.dur} · ${esc(p.onde)}</div></div></div>
+      ${p.dica?`<div class="dica">${esc(p.dica)}</div>`:""}
+      <div class="vid"><img src="img/${p.video}.jpg" alt="Capa de ${esc(p.nome)}" loading="lazy"><button class="play" data-v="${p.video}" aria-label="Ver vídeo"></button></div>
+      <a class="dl" href="vid/${p.video}.mp4" download="${p.video}.mp4">⬇ Salvar vídeo</a><span class="size">${p.mb} MB</span>
+      <div class="blk"><div class="bh"><span class="lbl">Legenda · Instagram e TikTok</span><button class="cp" data-c="social" data-id="${p.id}">Copiar</button></div>
+        <div class="txt">${esc(v.social)}${p.cred?"\n\n"+esc(D.cred):""}\n\n<span class="tg">${esc(v.tags.join(" "))}</span></div></div>
+      <div class="blk"><div class="bh"><span class="lbl">YouTube · título</span><button class="cp" data-c="titulo" data-id="${p.id}">Copiar</button></div>
+        <div class="txt">${esc(v.titulo)}</div>
+        <div class="bh yt"><span class="lbl">YouTube · descrição</span><button class="cp" data-c="desc" data-id="${p.id}">Copiar</button></div>
+        <div class="txt">${esc(v.desc)}</div></div>
+      <div class="posted">${PL.map(k=>`<label class="${ps[k]?"on":""}"><input type="checkbox" data-id="${p.id}" data-k="${k}" ${ps[k]?"checked":""}>${k}</label>`).join("")}</div>
+    </article>`}).join("");
+  const tot=D.posts.length,c=D.posts.filter(p=>PL.some(k=>(st.posted[p.id]||{})[k])).length;
+  $("#pc").textContent=c;$("#pt").textContent=tot;$("#pb").style.width=(c/tot*100)+"%";
+}
+async function copiar(t){
+  try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity=0;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove()}
+  const x=$("#toast");x.classList.add("on");clearTimeout(window._t);window._t=setTimeout(()=>x.classList.remove("on"),1400);
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cp");
+  if(b){const p=D.posts.find(x=>x.id===b.dataset.id),v=ver(p);copiar(b.dataset.c==="social"?social(p):v[b.dataset.c]);b.classList.add("ok");b.textContent="Copiado ✓";setTimeout(()=>{b.classList.remove("ok");b.textContent="Copiar"},1600);return}
+  const pl=e.target.closest(".play");
+  if(pl){const box=pl.parentElement;box.innerHTML=`<video src="vid/${pl.dataset.v}.mp4" controls playsinline autoplay preload="metadata"></video>`;return}
+});
+document.addEventListener("change",e=>{const i=e.target;if(!i.dataset.k)return;(st.posted[i.dataset.id]=st.posted[i.dataset.id]||{})[i.dataset.k]=i.checked;save();render();document.getElementById(i.dataset.id).scrollIntoView({block:"nearest"})});
+$("#abA").onclick=()=>{st.ab="A";save();render()};
+$("#abB").onclick=()=>{st.ab="B";save();render()};
+render();
+</script>
+</body>
+</html>
