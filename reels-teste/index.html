@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f0c33">
+<meta name="robots" content="noindex">
+<title>Central de posts · Reels de teste · Augusto Fonte</title>
+<link rel="icon" href="assets/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<style>
+@font-face{font-family:"PolySans";src:url(assets/fonts/polysans-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"PolySans";src:url(assets/fonts/polysans-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"PolySans";src:url(assets/fonts/polysans-800.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{--night:#1f0c33;--night2:#160824;--night3:#2a1245;--violet:#af5eff;--lilac:#d9b3ff;--paper:#faf5ff;--mute:#b9a6d1;--mint:#5be3b5;--pink:#ff6fae;--gold:#ffd36e;--line:rgba(217,179,255,.16);--f:"PolySans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--night2);color:var(--paper);font-family:var(--f);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(120% 60% at 100% 0%,rgba(175,94,255,.22),transparent 60%),radial-gradient(90% 50% at 0% 30%,rgba(255,111,174,.08),transparent 60%),var(--night2);min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-right))}
+header.top{position:sticky;top:0;z-index:20;background:rgba(22,8,36,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) 16px 10px}
+.top-in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top img{height:26px;display:block}
+.prog{font-size:13px;color:var(--mute);text-align:right;line-height:1.25}
+.prog b{color:var(--paper);font-weight:800}
+.bar{height:3px;background:var(--night3);border-radius:9px;margin-top:6px;overflow:hidden;width:120px;margin-left:auto}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--pink));width:0;transition:width .4s}
+.hero{padding:28px 0 6px}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);font-weight:600}
+h1{font-size:32px;line-height:1.05;margin:8px 0 10px;font-weight:800;letter-spacing:-.02em}
+h1 span{color:var(--violet)}
+.lead{color:var(--mute);margin:0 0 16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 14px}
+.stats div{background:var(--night3);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center}
+.stats b{display:block;font-size:20px;font-weight:800;color:var(--paper)}
+.stats span{font-size:11.5px;color:var(--mute);line-height:1.2;display:block}
+.linkbox{background:rgba(255,211,110,.08);border:1px solid rgba(255,211,110,.35);border-radius:14px;padding:12px 14px;margin:6px 0 4px}
+.linkbox label{font-size:13px;color:var(--gold);font-weight:600;display:block;margin-bottom:6px}
+.linkbox input{width:100%;background:var(--night2);border:1px solid var(--line);border-radius:10px;color:var(--paper);font:400 15px var(--f);padding:10px 12px}
+.linkbox small{display:block;color:var(--mute);font-size:12.5px;margin-top:6px}
+details.how{background:rgba(42,18,69,.6);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0 0;font-size:14.5px;color:var(--mute)}
+details.how summary{color:var(--paper);font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px}
+details.how summary::after{content:"+";color:var(--violet);font-weight:800}
+details.how[open] summary::after{content:"–"}
+details.how ol,details.how ul{margin:8px 0 0;padding-left:18px}
+details.how li{margin:4px 0}
+details.how p{margin:8px 0 0}
+details.how b{color:var(--paper)}
+.sec{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);font-weight:600;margin:30px 0 6px}
+.day{margin:22px 0 6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.day h3{margin:0;font-size:22px;font-weight:800}
+.day .r{font-size:11.5px;font-weight:800;padding:3px 9px;border-radius:99px;background:var(--violet);color:var(--night2)}
+.day .r.r0{background:var(--night3);color:var(--mute)}.day .r.r3{background:var(--pink)}.day .r.r4{background:var(--gold)}
+.dnote{font-size:13.5px;color:var(--lilac);background:rgba(175,94,255,.1);border-radius:10px;padding:8px 10px;margin:6px 0 0}
+.card{background:linear-gradient(180deg,rgba(42,18,69,.92),rgba(31,12,51,.92));border:1px solid var(--line);border-radius:22px;margin:12px 0;overflow:hidden}
+.card.done{border-color:rgba(91,227,181,.45)}
+.ch{display:flex;gap:12px;align-items:center;padding:16px 16px 10px}
+.num{flex:none;min-width:58px;height:42px;border-radius:12px;background:var(--violet);color:var(--night2);display:grid;place-items:center;font-weight:800;font-size:15px;padding:0 8px}
+.card.done .num{background:var(--mint)}
+.ch h2{font-size:17px;line-height:1.2;margin:0;font-weight:800}
+.meta{font-size:12.5px;color:var(--mute);margin-top:2px}
+.row{display:flex;gap:12px;margin:0 16px}
+.thumb{flex:none;width:108px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#000}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.hook{font-size:14px;color:var(--paper)}
+.hook .lbl{display:block;margin-bottom:4px}
+.dl{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 16px 4px;padding:13px;border-radius:14px;background:var(--paper);color:var(--night);font-weight:800;text-decoration:none;font-size:15px}
+.blk{margin:12px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(22,8,36,.55)}
+.bh{display:flex;justify-content:space-between;align-items:center;padding:10px 12px 0;gap:8px}
+.lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--lilac);font-weight:600}
+.cp{border:0;background:var(--violet);color:var(--night2);font:800 13px/1 var(--f);padding:9px 14px;border-radius:99px;cursor:pointer;white-space:nowrap}
+.cp.ok{background:var(--mint)}
+.txt{white-space:pre-wrap;word-break:break-word;padding:8px 12px 12px;font-size:14.5px;color:var(--paper);max-height:240px;overflow:auto}
+.txt .tg{color:var(--lilac)}
+.posted{margin:6px 16px 16px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:6px}
+.posted label{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);border-radius:12px;padding:9px 6px;font-size:13px;color:var(--mute);cursor:pointer;user-select:none}
+.posted label.on{border-color:rgba(91,227,181,.5);color:var(--mint);background:rgba(91,227,181,.08)}
+.posted input[type=checkbox]{accent-color:var(--mint);width:16px;height:16px}
+.posted input.n{width:100%;background:var(--night2);border:1px solid var(--line);border-radius:12px;color:var(--paper);font:600 14px var(--f);padding:9px 6px;text-align:center}
+.posted input.n::placeholder{color:var(--mute);font-weight:400;font-size:12px}
+table.rk{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+table.rk th{color:var(--lilac);font-weight:600;text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 4px;border-bottom:1px solid var(--line)}
+table.rk td{padding:7px 4px;border-bottom:1px solid var(--line);color:var(--paper)}
+table.rk tr:first-child td{color:var(--mint);font-weight:800}
+footer{text-align:center;color:var(--mute);font-size:12.5px;padding:24px 0 8px}
+footer img{width:30px;opacity:.9;display:block;margin:0 auto 8px}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;background:var(--mint);color:var(--night2);font-weight:800;padding:12px 18px;border-radius:99px;transition:.25s;z-index:40;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <img src="assets/logo.svg" alt="Augusto Fonte">
+  <div class="prog"><b id="pc">0</b> de <b id="pt">0</b> posts publicados<div class="bar"><i id="pb"></i></div></div>
+</div></header>
+<div class="wrap">
+  <section class="hero">
+    <div class="kicker">Central de posts · @_augustofonte · Reels de teste</div>
+    <h1>Agência no Claude: <span>18 criativos em 12 dias</span></h1>
+    <p class="lead">O plano completo para postar os criativos da versão afiliado como Reel de teste. Abra o vídeo no Drive, salve no celular, copie a legenda e poste no horário do dia.</p>
+    <div class="stats">
+      <div><b>18</b><span>criativos</span></div>
+      <div><b>2</b><span>por dia útil</span></div>
+      <div><b>12h15</b><span>1º post</span></div>
+      <div><b>19h30</b><span>2º post</span></div>
+    </div>
+    <div class="linkbox">
+      <label for="lk">Seu link de afiliado</label>
+      <input id="lk" type="url" inputmode="url" placeholder="Cole aqui o link de afiliado da página" autocomplete="off">
+      <small>Fica salvo só neste celular. Entra sozinho na resposta do direct, logo abaixo.</small>
+    </div>
+
+    <details class="how"><summary>1 · O que eu vi no seu Instagram</summary>
+      <ul>
+        <li>A conta é a <b>@_augustofonte</b> (verificada, 101 posts, 1.698 seguidores). A @augustofonte, sem o traço, está privada, sem posts e com 112 seguidores. Os testes vão na @_augustofonte.</li>
+        <li>Você posta cerca de <b>1 Reel por semana</b>. Os recentes ficam entre <b>400 e 1.500 views</b>. O formato que você mais usa é o "trabalhe comigo" (timelapse de tela e de mesa).</li>
+        <li>O melhor recente foi o <b>"Isso não foi feito no After Effects" (12/10)</b>: 3.601 views e <b>64 comentários</b>, com "Comenta MOTION". A palavra no comentário já funciona com o seu público, por isso o plano usa a mesma mecânica com <b>AGENTE</b>.</li>
+        <li>Seu público de hoje é de design e IA, não de dono de negócio. Por isso os testes vão primeiro para quem <b>não</b> te segue (é isso que o Reel de teste faz), sem encher o seu feed de vídeo de venda.</li>
+        <li><b>A bio está desatualizada</b> para essa campanha: diz "Designer gráfico · 7 anos no mercado digital", e os vídeos dizem "mais de oito anos dentro de agência". Quem chega pelo Reel vai olhar a bio. Sugestão no item 6.</li>
+      </ul>
+    </details>
+
+    <details class="how"><summary>2 · Por que Reel de teste e como postar</summary>
+      <p>O Reel de teste aparece primeiro só para quem não te segue. Você vê o resultado em cerca de 24 horas e decide se compartilha com os seguidores. Ele não entra no seu grid até você compartilhar. É o lugar certo para testar gancho.</p>
+      <ol>
+        <li>Toque em <b>Abrir no Drive</b> no card do dia → no app do Drive, toque nos 3 pontinhos → <b>Enviar uma cópia</b> → <b>Salvar vídeo</b>. Ele vai para a galeria.</li>
+        <li>No Instagram: <b>+</b> → <b>Reel</b> → escolha o vídeo → <b>Avançar</b>.</li>
+        <li>Volte aqui, toque em <b>Copiar</b> na legenda e cole.</li>
+        <li><b>Capa:</b> escolha o quadro do gancho, com a legenda grande na tela (é o que aparece na sua capa aqui no card).</li>
+        <li>Ligue a chave <b>Reel de teste</b> (aparece na tela da legenda, logo acima de Compartilhar).</li>
+        <li>Deixe o compartilhamento com seguidores no <b>manual</b>. Você decide no item 5.</li>
+        <li>Toque em <b>Compartilhar</b> e marque <b>Postei</b> no card.</li>
+      </ol>
+      <p>A opção de Reel de teste exige conta profissional (criador ou empresa). Se ela não aparecer, confira em Configurações → Tipo de conta.</p>
+    </details>
+
+    <details class="how"><summary>3 · Quantos por dia e em que ordem</summary>
+      <ul>
+        <li><b>2 por dia útil, 1 no sábado, 0 no domingo.</b> Mais que 2 por dia divide a entrega entre os vídeos e embaralha a leitura do teste.</li>
+        <li><b>Rodada 1 (05 a 07/11):</b> um vídeo de cada ângulo (recibo, frase, nunca usei IA, oito anos, quem decide). Responde "qual assunto prende mais".</li>
+        <li><b>Domingo 08/11:</b> você lê os números e monta o ranking.</li>
+        <li><b>Rodada 2 (09 a 13/11):</b> os ganchos B e C de cada ângulo. Responde "qual abertura prende mais dentro do mesmo assunto". O ângulo que ganhou no domingo vai primeiro.</li>
+        <li><b>Rodada 3 (14 e 16/11):</b> os 3 Super, que juntam os melhores pedaços.</li>
+        <li><b>17/11:</b> o vencedor geral é compartilhado com os seus seguidores e vira o candidato a anúncio.</li>
+      </ul>
+    </details>
+
+    <details class="how"><summary>4 · Melhor horário</summary>
+      <ul>
+        <li><b>12h15:</b> pausa do almoço, quando dono de negócio e quem trabalha com marketing abre o Instagram. Fica longe das suas Dailies das 9h30 e 10h.</li>
+        <li><b>19h30:</b> pico da noite no Brasil, depois da Daily de Desenvolvimento das 17h. Dá tempo de responder os comentários na primeira hora, que é quando o Instagram mais mede.</li>
+        <li><b>Sábado 11h00:</b> o fim de semana rende melhor de manhã.</li>
+        <li>Como o Reel de teste vai para quem não te segue, os horários dos seus seguidores importam menos. O que mais importa é <b>postar sempre no mesmo horário</b>, para os testes serem comparáveis.</li>
+        <li>Depois da Rodada 1, confira no app: <b>Painel profissional → Público → Horários mais ativos</b>. Se o pico for outro, mova só o post da noite.</li>
+      </ul>
+    </details>
+
+    <details class="how"><summary>5 · Como decidir o vencedor</summary>
+      <p>Espere <b>24 horas</b> depois de cada post. No Reel, toque em <b>Ver insights</b> e anote no card três números: views, retenção e comentários AGENTE.</p>
+      <ul>
+        <li><b>Retenção</b> = a porcentagem que passou dos 3 primeiros segundos (o Instagram mostra como "taxa de permanência" ou "visualizações além de 3 s"). É o número que julga o <b>gancho</b>.</li>
+        <li><b>Comentários AGENTE</b> julgam a <b>venda</b>: é gente pedindo o link.</li>
+        <li><b>Vence</b> quem tem a maior retenção entre os que tiveram mais de 300 views. Empate: ganha o que tem mais AGENTE.</li>
+        <li>Se um vídeo passar de <b>3 mil views</b> ou de <b>10 AGENTE</b>, compartilhe com os seguidores na hora, sem esperar o dia 17.</li>
+      </ul>
+      <p>O placar no fim desta página monta o ranking sozinho com o que você anotar.</p>
+    </details>
+
+    <details class="how"><summary>6 · Bio e resposta do direct</summary>
+      <p><b>Bio sugerida</b> (troque o link da bio pelo seu link de afiliado durante a campanha):</p>
+      <div class="blk" style="margin:8px 0"><div class="bh"><span class="lbl">Bio</span><button class="cp" data-c="bio">Copiar</button></div><div class="txt" id="bioTxt"></div></div>
+      <p><b>Resposta para quem comentar AGENTE</b> (mande no direct, à mão ou por automação de palavra-chave):</p>
+      <div class="blk" style="margin:8px 0"><div class="bh"><span class="lbl">Direct</span><button class="cp" data-c="dm">Copiar</button></div><div class="txt" id="dmTxt"></div></div>
+      <p>Responda também o comentário em público ("te mandei no direct 👊"). Isso conta como conversa e ajuda o alcance.</p>
+    </details>
+
+    <details class="how"><summary>7 · Atenção: o "toca em saiba mais" do final</summary>
+      <p>Os 18 vídeos terminam com "toca em saiba mais", que é a chamada do anúncio pago. No Reel orgânico esse botão não existe. Por isso toda legenda já fecha com "Comenta AGENTE… ou toca no link da bio", que faz a ponte.</p>
+      <p>Se o vencedor for virar post fixo no feed, posso refazer só o final dele com "comenta AGENTE" falado na tela.</p>
+    </details>
+  </section>
+
+  <div class="sec">Calendário</div>
+  <main id="lista"></main>
+
+  <div class="sec">Placar</div>
+  <details class="how" open><summary>Ranking pela retenção</summary><div id="rank"></div></details>
+
+  <p style="margin-top:18px"><a class="dl" href="https://drive.google.com/drive/folders/1TYNDQdEV-auNHXEjcRnbCkqR2Obn16jg" target="_blank" rel="noopener">📁 Abrir a pasta inteira no Drive</a></p>
+  <footer><img src="assets/icone.svg" alt="">Augusto Fonte · central de posts · Reels de teste</footer>
+</div>
+<div class="toast" id="toast">Copiado</div>
+<script>
+const D={"v": {"G5A": {"drive": "1cFN-6MDclL63dOtQmIt0fSF2j2NdbKRI", "nome": "O Recibo Na Mão", "dur": 22, "gancho": "Essa campanha inteira custou três reais e trinta. E eu tenho o recibo.", "leg": "R$ 3,30. Essa foi a conta de uma campanha inteira.\n\nAnálise do concorrente: R$ 0,20\nRoteiros: R$ 0,36\n10 anúncios editados: R$ 2,10\nPágina no ar: R$ 0,64\n\nTudo rodando dentro da assinatura do Claude. Quinze profissionais de IA trabalhando, e quem aprova sou eu."}, "G5B": {"drive": "18Bz1WWARxzcJJ82gpclRLGU2nUjAADSl", "nome": "O Recibo Na Mão", "dur": 21, "gancho": "Quanto custou a sua última campanha? Agora olha esse número.", "leg": "Quanto custou a sua última campanha? Pensa no número antes de continuar.\n\nAgora olha esse: R$ 3,30. Pesquisa do concorrente, roteiros, 10 anúncios editados e a página no ar.\n\nNão é desconto de agência. É uma agência inteira rodando dentro do Claude."}, "G5C": {"drive": "1oAk6mWaO0ej3D4O_Lfjjq9UflyELrPUm", "nome": "O Recibo Na Mão", "dur": 23, "gancho": "Três reais e trinta. Não é o preço do produto, é o custo de uma campanha.", "leg": "R$ 3,30 não é o preço do produto. É quanto custou uma campanha inteira.\n\nO Espião estudou o concorrente. O Copywriter escreveu. O Editor montou os anúncios. A página subiu. Cada etapa com o seu centavo anotado no recibo.\n\nEu só aprovei."}, "G8A": {"drive": "1LAJwbc95iFLzjT64J-l_OOfjcwi6kO5-", "nome": "Uma Frase", "dur": 23, "gancho": "Olha o que acontece quando eu mando uma frase pro meu Claude.", "leg": "Mandei uma frase pro meu Claude: \"quero vender meu curso no Instagram\".\n\nEle me fez duas perguntas. Depois chamou o time: o Espião foi estudar o mercado, o Copywriter escreveu os anúncios, o Designer montou a página e o Revisor conferiu tudo.\n\nNuma conversa, eu tinha pesquisa, copy, página e anúncio prontos pra aprovar."}, "G8B": {"drive": "1cyTt7baZMxlclhIMap2ybc3BfyQDZm47", "nome": "Uma Frase", "dur": 22, "gancho": "Uma frase, uma campanha inteira. Vou te mostrar.", "leg": "Uma frase. Uma campanha inteira.\n\n1. Eu escrevo o que quero vender\n2. Ele pergunta pra quem é e o preço\n3. O time entra: Espião, Copywriter, Designer, Revisor\n4. Chega tudo pronto pra eu aprovar\n\nSem prompt gigante. Sem dez abas abertas."}, "G8C": {"drive": "1qd-k6gjSkkgypoNFCfQOGa3TvC6hp6DU", "nome": "Uma Frase", "dur": 22, "gancho": "Isso aqui é o meu computador trabalhando como uma agência.", "leg": "Isso aqui é o meu computador trabalhando como uma agência.\n\nPesquisa de mercado, copy, página e anúncio. Cada coisa feita por um profissional de IA diferente, dentro do Claude, e tudo parando numa tela esperando o meu ok."}, "G6A": {"drive": "1EyJumhQVNATYO3cXH_dBJA3ipv36BVbG", "nome": "Nunca Usei IA Direito", "dur": 23, "gancho": "Você nunca usou IA direito? Ótimo! Isso aqui foi feito pra você.", "leg": "Você nunca usou IA direito? Ótimo. Isso aqui foi feito pra você.\n\nO problema nunca foi a IA. É que ela chega vazia e espera você saber pedir.\n\nAqui é o contrário: você fala do seu jeito, ela faz duas ou três perguntas e chama quem precisa. Sem prompt. Sem curso de horas."}, "G6B": {"drive": "19eyae2TOgPWBWAdPWZY42jbmrv77Z3be", "nome": "Nunca Usei IA Direito", "dur": 22, "gancho": "Se você trava na hora de escrever o prompt, assiste até o fim.", "leg": "Se você trava na hora de escrever o prompt, esse vídeo é pra você.\n\nVocê não escreve prompt nenhum. Fala \"quero vender meu curso no Instagram\" e pronto: o Espião, o Copywriter, o Designer e o Editor entram em ação.\n\nVocê conversa, eles fazem, você aprova."}, "G6C": {"drive": "1BaQ3ihO5ri9k2KZzGVl8AGaZ8AQLhjFu", "nome": "Nunca Usei IA Direito", "dur": 24, "gancho": "Você não precisa aprender IA, precisa saber o que quer vender.", "leg": "Você não precisa aprender IA. Precisa saber o que quer vender.\n\nO resto é com o time: pesquisa, roteiro, arte, página e anúncio. Cada um com o seu profissional, dentro do Claude.\n\nSalva esse vídeo pra lembrar disso na próxima vez que travar no prompt."}, "G4A": {"drive": "1HClanTMj9oYj7o_CZMezucMRZ5kg9wU4", "nome": "Oito Anos de Agência", "dur": 24, "gancho": "Eu passei mais de oito anos dentro de agência. E vou te contar o que ninguém de agência conta.", "leg": "Mais de oito anos dentro de agência. E o que ninguém de agência conta é isso: é muita gente boa fazendo a mesma coisa todo mês.\n\nPesquisa, roteiro, arte, página, anúncio. Sempre o mesmo processo.\n\nEntão eu peguei esse processo e coloquei dentro do Claude. Uma única tecnologia. A agência inteira."}, "G4B": {"drive": "1O61VXAoltzK6QM-zIE49NuMMqXSNhnNh", "nome": "Oito Anos de Agência", "dur": 22, "gancho": "Mais de dois mil criativos em dez meses. Foi aí que eu entendi o problema.", "leg": "Mais de dois mil criativos em dez meses. Foi aí que eu entendi o problema.\n\nNão era falta de gente boa. Era o mesmo processo se repetindo todo mês: pesquisa, roteiro, arte, página, anúncio.\n\nHoje esse processo roda dentro do Claude, com quinze profissionais de IA. Eu só aprovo."}, "G4C": {"drive": "1R4d-xGXpcPfLbJkQifjeN3l5zNKZ-A-j", "nome": "Oito Anos de Agência", "dur": 22, "gancho": "Se eu ainda trabalhasse em agência, esse vídeo me deixaria preocupado.", "leg": "Se eu ainda trabalhasse em agência, esse vídeo me deixaria preocupado.\n\nPorque o processo inteiro de uma agência (pesquisa, roteiro, arte, página e anúncio) cabe dentro do Claude. Você conversa com um agente, ele chama o time, e as peças chegam prontas pra aprovar.\n\nManda pra aquele amigo que trabalha em agência."}, "G7A": {"drive": "10xqYnQL13rn7-zPw51W3aXhuXfRgenG6", "nome": "Quem Decide É Você", "dur": 22, "gancho": "Medo de deixar a IA falar em nome da sua marca?", "leg": "Medo de deixar a IA falar em nome da sua marca? Faz sentido.\n\nAqui toda peça passa por um Revisor antes de chegar em você. Ele confere o tom, a promessa e os números. Se falta um dado real, ninguém chuta: aparece marcado pra você preencher.\n\nA agência trabalha. Quem decide é você."}, "G7B": {"drive": "19X2naLNzz9INew0yr2N3DxqVNGlAYcwr", "nome": "Quem Decide É Você", "dur": 22, "gancho": "IA que publica sozinha é um perigo. Aqui nada sai sem o seu ok.", "leg": "IA que publica sozinha é um perigo. Aqui nada sai sem o seu ok.\n\nTudo termina numa tela esperando a sua aprovação. E quando você corrige uma vez, vira regra: o erro não se repete."}, "G7C": {"drive": "1LB75i0ap4ZZ29C0GtC3fGNmStPNCoToH", "nome": "Quem Decide É Você", "dur": 21, "gancho": "Já pegou a IA inventando um número? Olha como isso acaba aqui.", "leg": "Já pegou a IA inventando um número? Comenta aqui embaixo o pior que você já viu.\n\nAqui, se falta um dado real, ninguém chuta. Aparece \"[inserir número real]\" pra você preencher. E um Revisor confere tudo antes de chegar em você."}, "S1A": {"drive": "148Qe9PrEoozyDZgwX_5826Tp-5zVPmce", "nome": "Super · O Recibo", "dur": 31, "gancho": "Essa campanha inteira custou três reais e trinta. E eu tenho o recibo.", "leg": "R$ 3,30 por uma campanha inteira. E eu tenho o recibo.\n\nOito anos dentro de agência me mostraram que é sempre o mesmo processo. Então eu coloquei esse processo dentro do Claude, com quinze profissionais de IA.\n\nConcorrente: R$ 0,20 · Roteiros: R$ 0,36 · Anúncios: R$ 2,10 · Página: R$ 0,64.\n\nUma única tecnologia. A agência inteira."}, "S2A": {"drive": "1wF2BOVZSUCziorYO0RcjmXGXN6fGdTee", "nome": "Super · Uma Frase", "dur": 28, "gancho": "Você nunca usou IA direito? Ótimo! Isso aqui foi feito pra você.", "leg": "Nunca usou IA direito? Então assiste esse aqui.\n\nEu escrevi uma frase. O agente me fez duas perguntas e chamou o time. Numa conversa só, eu tinha pesquisa, copy, página e anúncio prontos pra aprovar.\n\nSem prompt. Sem curso de horas. A agência trabalha, quem decide é você."}, "S3A": {"drive": "1_djwJ18lkzQCg3N0hpJNlgHWF6OuhnKk", "nome": "Super · Se Eu Ainda Trabalhasse", "dur": 33, "gancho": "Se eu ainda trabalhasse em agência, esse vídeo me deixaria preocupado.", "leg": "Se eu ainda trabalhasse em agência, esse vídeo me deixaria preocupado.\n\nQuinze profissionais de IA dentro do Claude. Você fala do seu jeito, o agente chama quem precisa, um Revisor confere tudo e a peça chega pra você aprovar.\n\nUma única tecnologia. A agência inteira."}}, "dias": [{"data": "05/11", "dia": "Quinta", "rod": 1, "posts": [{"hora": "12h15", "id": "G5A"}, {"hora": "19h30", "id": "G8A"}], "nota": "Começa pelos dois ângulos mais fortes: a prova (recibo) e a demonstração."}, {"data": "06/11", "dia": "Sexta", "rod": 1, "posts": [{"hora": "12h15", "id": "G6A"}, {"hora": "19h30", "id": "G4A"}], "nota": ""}, {"data": "07/11", "dia": "Sábado", "rod": 1, "posts": [{"hora": "11h00", "id": "G7A"}], "nota": "Sábado só um post. Fim de semana o público de negócio rende menos."}, {"data": "08/11", "dia": "Domingo", "rod": 0, "posts": [], "nota": "Sem post. Abra os 5 Reels de teste e anote views, retenção e comentários AGENTE. Monte o ranking dos ângulos."}, {"data": "09/11", "dia": "Segunda", "rod": 2, "posts": [{"hora": "12h15", "id": "G5B"}, {"hora": "19h30", "id": "G5C"}], "nota": "Rodada 2: os ganchos B e C. A ordem abaixo é a minha aposta. Se no domingo outro ângulo ganhou, ele sobe para segunda."}, {"data": "10/11", "dia": "Terça", "rod": 2, "posts": [{"hora": "12h15", "id": "G8B"}, {"hora": "19h30", "id": "G8C"}], "nota": ""}, {"data": "11/11", "dia": "Quarta", "rod": 2, "posts": [{"hora": "12h15", "id": "G6B"}, {"hora": "19h30", "id": "G6C"}], "nota": ""}, {"data": "12/11", "dia": "Quinta", "rod": 2, "posts": [{"hora": "12h15", "id": "G4B"}, {"hora": "19h30", "id": "G4C"}], "nota": ""}, {"data": "13/11", "dia": "Sexta", "rod": 2, "posts": [{"hora": "12h15", "id": "G7B"}, {"hora": "19h30", "id": "G7C"}], "nota": ""}, {"data": "14/11", "dia": "Sábado", "rod": 3, "posts": [{"hora": "11h00", "id": "S1A"}], "nota": "Rodada 3: os Super, que juntam os melhores pedaços das 5 gravações."}, {"data": "15/11", "dia": "Domingo", "rod": 0, "posts": [], "nota": "Sem post. Compare os 15 ganchos e escolha o vencedor geral."}, {"data": "16/11", "dia": "Segunda", "rod": 3, "posts": [{"hora": "12h15", "id": "S2A"}, {"hora": "19h30", "id": "S3A"}], "nota": ""}, {"data": "17/11", "dia": "Terça", "rod": 4, "posts": [], "nota": "Pegue o vencedor geral (o de maior retenção com mais comentários AGENTE) e compartilhe com os seus seguidores pelo próprio painel do Reel de teste. É ele que vai pro seu feed e vira anúncio impulsionado, se quiser."}], "cta": "Comenta AGENTE que eu te mando o link no direct. Ou toca no link da bio.", "tags": "#claude #inteligenciaartificial #marketingdigital #agenciadigital #ia", "dm": "Opa! Tá aqui o link pra você ver essa agência funcionando por dentro, com o recibo da campanha:\n{LINK}\n\nAssiste o vídeo da página até o fim. Se ficar qualquer dúvida, me responde aqui que eu te ajudo.", "bio": "Instalei uma agência de marketing inteira dentro do Claude 🤖\n8+ anos em agência · 2 mil criativos em 10 meses\n👇 Veja funcionando"};
+const $=s=>document.querySelector(s);
+const LS="central-af-teste-v1";
+const st=JSON.parse(localStorage.getItem(LS)||'{"posted":{},"m":{},"link":""}');
+const save=()=>localStorage.setItem(LS,JSON.stringify(st));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const leg=id=>D.v[id].leg+"\n\n"+D.cta+"\n\n"+D.tags;
+const dm=()=>D.dm.replace("{LINK}",st.link||"[cole seu link de afiliado no topo da central]");
+const ids=[];D.dias.forEach(d=>d.posts.forEach(p=>ids.push(p.id)));
+function card(p){const v=D.v[p.id],m=st.m[p.id]||{},done=!!st.posted[p.id];
+  return `<article class="card${done?" done":""}" id="c-${p.id}">
+    <div class="ch"><div class="num">${p.hora}</div><div><h2>${esc(p.id)} · ${esc(v.nome)}</h2><div class="meta">${v.dur} s · Gancho ${p.id.slice(-1)} · Reel de teste</div></div></div>
+    <div class="row"><div class="thumb"><img src="img/${p.id}.jpg" alt="Capa de ${esc(p.id)}" loading="lazy"></div>
+      <div class="hook"><span class="lbl">O gancho (primeiros 3 s)</span>“${esc(v.gancho)}”</div></div>
+    <a class="dl" href="https://drive.google.com/file/d/${v.drive}/view" target="_blank" rel="noopener">▶ Abrir no Drive</a>
+    <div class="blk"><div class="bh"><span class="lbl">Legenda</span><button class="cp" data-c="leg" data-id="${p.id}">Copiar</button></div>
+      <div class="txt">${esc(v.leg)}\n\n${esc(D.cta)}\n\n<span class="tg">${esc(D.tags)}</span></div></div>
+    <div class="posted">
+      <label class="${done?"on":""}"><input type="checkbox" data-id="${p.id}" ${done?"checked":""}>Postei</label>
+      <input class="n" data-id="${p.id}" data-k="views" inputmode="numeric" placeholder="views" value="${esc(m.views||"")}">
+      <input class="n" data-id="${p.id}" data-k="ret" inputmode="decimal" placeholder="ret. %" value="${esc(m.ret||"")}">
+      <input class="n" data-id="${p.id}" data-k="ag" inputmode="numeric" placeholder="AGENTE" value="${esc(m.ag||"")}">
+    </div></article>`}
+function rank(){const num=x=>parseFloat(String(x||"").replace(/\./g,"").replace(",","."))||0;
+  const r=ids.map(id=>({id,...(st.m[id]||{})})).filter(x=>x.views||x.ret||x.ag);
+  if(!r.length){$("#rank").innerHTML='<p>Anote views, retenção e comentários AGENTE nos cards para o ranking aparecer.</p>';return}
+  r.sort((a,b)=>((num(b.views)>=300)-(num(a.views)>=300))||(num(b.ret)-num(a.ret))||(num(b.ag)-num(a.ag)));
+  $("#rank").innerHTML=`<table class="rk"><tr><th>#</th><th>Vídeo</th><th>Views</th><th>Ret.</th><th>AGENTE</th></tr>${r.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.id)} · ${esc(D.v[x.id].nome)}</td><td>${esc(x.views||"–")}</td><td>${x.ret?esc(x.ret)+"%":"–"}</td><td>${esc(x.ag||"–")}</td></tr>`).join("")}</table>`}
+function render(){
+  $("#lista").innerHTML=D.dias.map(d=>`<div class="day"><h3>${d.dia} ${d.data}</h3><span class="r r${d.rod}">${["Leitura","Rodada 1 · ângulos","Rodada 2 · ganchos","Rodada 3 · Super","Vencedor no feed"][d.rod]}</span></div>
+    ${d.nota?`<div class="dnote">${esc(d.nota)}</div>`:""}${d.posts.map(card).join("")}`).join("");
+  const c=ids.filter(id=>st.posted[id]).length;$("#pc").textContent=c;$("#pt").textContent=ids.length;$("#pb").style.width=(c/ids.length*100)+"%";
+  $("#bioTxt").textContent=D.bio;$("#dmTxt").textContent=dm();rank();
+}
+async function copiar(t){
+  try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity=0;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove()}
+  const x=$("#toast");x.classList.add("on");clearTimeout(window._t);window._t=setTimeout(()=>x.classList.remove("on"),1400);
+}
+document.addEventListener("click",e=>{const b=e.target.closest(".cp");if(!b)return;
+  const t=b.dataset.c==="leg"?leg(b.dataset.id):b.dataset.c==="bio"?D.bio:dm();
+  copiar(t);b.classList.add("ok");b.textContent="Copiado ✓";setTimeout(()=>{b.classList.remove("ok");b.textContent="Copiar"},1600)});
+document.addEventListener("change",e=>{const i=e.target;
+  if(i.type==="checkbox"&&i.dataset.id){st.posted[i.dataset.id]=i.checked;save();render();document.getElementById("c-"+i.dataset.id).scrollIntoView({block:"nearest"});return}
+  if(i.classList.contains("n")){(st.m[i.dataset.id]=st.m[i.dataset.id]||{})[i.dataset.k]=i.value.trim();save();rank()}});
+$("#lk").value=st.link;$("#lk").addEventListener("input",e=>{st.link=e.target.value.trim();save();$("#dmTxt").textContent=dm()});
+render();
+</script>
+</body>
+</html>
