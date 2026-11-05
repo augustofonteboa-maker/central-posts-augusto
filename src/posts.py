@@ -100,39 +100,3 @@ for i, (nome, emo, resumo, tit_b, hist_b) in enumerate(EPS, 1):
             "desc": f"{hist_b}\n{prox}\n{CRED}\n#shorts #OPequenoPrincipe #Historia",
         },
     })
-
-
-# ---------------- aba 2: Reels do video "7 coisas que eu faco no Claude" ----------------
-for p in posts:
-    p.setdefault("aba", "fabrica")
-
-LINK7 = "https://youtu.be/m-bHmSesY6Q"
-REELS7 = [
-    ("reel-01-claude-errado", "Você usa o Claude errado?",
-     "Você usa o Claude errado. E não é culpa sua.\n\nQuase todo mundo usa ele só como um chat: pergunta, ele responde, acabou.\nEu uso pra coisas que a maioria nem sabe que dá pra fazer.\n\nSeparei 7 delas num vídeo completo no meu canal. A 6ª muda o jogo 👀\n\nComenta CLAUDE que eu te mando o link.",
-     ["#claude", "#inteligenciaartificial", "#ia", "#claudeai", "#designer"]),
-    ("reel-02-novelinha-flow", "Novelinha no Google Flow",
-     "Eu fiz um pedido. O Claude fez a novelinha inteira.\n\nRoteiro, personagens, animação e narração. Eu não abri o Google Flow: ele entrou e fez tudo sozinho.\n\nServe pra novelinha no TikTok, vídeo de história e canal dark.\n\nComenta CLAUDE que eu te mando como eu faço.",
-     ["#claude", "#googleflow", "#animacaoia", "#novelinha", "#ia"]),
-    ("reel-03-postar-manual", "Por que eu não automatizo posts",
-     "Por que eu NÃO automatizo os meus posts?\n\nTodo mundo fala pra usar aplicativo de agendamento. Eu faço diferente, e tenho um motivo.\n\nO Claude deixa tudo pronto, mas quem aperta o botão sou eu 😉\n\nComenta CLAUDE que eu te mando como eu monto o meu processo.",
-     ["#claude", "#socialmedia", "#instagram", "#designer", "#ia"]),
-    ("reel-04-o-cofre", "O cofre",
-     "Essa é a coisa que mais mudou o meu jeito de usar o Claude.\n\nNão é prompt. Não é skill.\nÉ uma coisa que eu chamo de cofre, e o resultado fica outro nível.\n\nExplico o que é e como funciona no vídeo completo.\n\nComenta CLAUDE que eu te mando o link.",
-     ["#claude", "#ia", "#inteligenciaartificial", "#produtividade", "#claudeai"]),
-    ("reel-05-estrategista", "O Claude decide o que eu gravo",
-     "Eu não chuto mais o que vou gravar.\n\nColoquei um \"amigo\" dentro do Claude que olha o meu canal, os meus concorrentes e o que está dando certo. E ele me diz o que gravar.\n\nEste vídeo inteiro saiu dessa análise.\n\nComenta CLAUDE que eu te mando como configurar o seu.",
-     ["#claude", "#youtube", "#criadordeconteudo", "#ia", "#claudeai"]),
-]
-for i, (vid, nome, leg, tags) in enumerate(REELS7, 1):
-    posts.append({
-        "id": vid, "video": vid, "num": f"R{i}", "aba": "claude7",
-        "nome": f"Reel {i} · {nome}", "dur": "Reel 9:16", "onde": "Instagram · TikTok",
-        "dica": "Poste depois que o vídeo do YouTube estiver no ar. Responda quem comentar CLAUDE com: " + LINK7 if i == 1 else "",
-        "A": {"social": leg, "tags": tags, "titulo": "", "desc": ""},
-    })
-
-ABAS = [{"id": "fabrica", "nome": "Pequeno Príncipe", "titulo": "Fábrica de Histórias: <span>O Pequeno Príncipe</span>",
-         "lead": "Salve o vídeo, copie a legenda e poste. Cada post tem duas versões de texto para o teste A/B.", "ab": True},
-        {"id": "claude7", "nome": "7 coisas no Claude", "titulo": "7 coisas no <span>Claude</span>: Reels",
-         "lead": "5 Reels cortados do vídeo. Salve, copie a legenda e poste um por dia.", "ab": False}]
