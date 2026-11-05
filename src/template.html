@@ -118,7 +118,7 @@ function render(){
   $("#abA").classList.toggle("on",st.ab==="A");$("#abB").classList.toggle("on",st.ab==="B");
   $("#abNote").textContent=st.ab==="A"?"Versão A: mostra que foi feito com IA e chama para a aula (comenta HISTÓRIA).":"Versão B: só conta a história, sem falar de ferramenta.";
   $("#lista").innerHTML=LIST.map(p=>{
-    const v=ver(p),soB=!p.B&&st.ab==="B";
+    const v=ver(p),soB=ABA.ab&&!p.B&&st.ab==="B";
     const ps=st.posted[p.id]||{};
     const done=PL.some(k=>ps[k]);
     return `<article class="card${done?" done":""}" id="${p.id}">
