@@ -13,7 +13,7 @@ for p in posts:
         if not (raiz / caminho).exists():
             print("AVISO: arquivo não encontrado:", caminho)
     p["mb"] = round((raiz / f"vid/{p['video']}.mp4").stat().st_size / 1e6)
-    p["cred"] = p["id"] != "chamada"
+    p["cred"] = p["id"] != "chamada" and p.get("aba", "fabrica") == "fabrica"
     for k in ("A", "B"):
         if k in p:
             if len(p[k]["tags"]) > 5:
@@ -21,7 +21,7 @@ for p in posts:
             if len(p[k]["titulo"]) > 100:
                 print("AVISO: título do YouTube acima de 100 caracteres em", p["id"], k)
 
-js = json.dumps({"posts": posts, "cred": dados["CRED"]}, ensure_ascii=False).replace("</", "<\\/")
+js = json.dumps({"posts": posts, "cred": dados["CRED"], "abas": dados["ABAS"]}, ensure_ascii=False).replace("</", "<\\/")
 tpl = (raiz / "src" / "template.html").read_text(encoding="utf-8")
 (raiz / "index.html").write_text(tpl.replace("__DATA__", js), encoding="utf-8")
 print("index.html gerado com", len(posts), "posts")

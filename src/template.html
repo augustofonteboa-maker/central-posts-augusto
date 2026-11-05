@@ -29,6 +29,7 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(22,8,36,.86);backdro
 h1{font-size:34px;line-height:1.05;margin:8px 0 10px;font-weight:800;letter-spacing:-.02em}
 h1 span{color:var(--violet)}
 .lead{color:var(--mute);margin:0 0 16px}
+.tabs{display:flex;gap:8px;margin:14px 0 4px;flex-wrap:wrap}.tabs button{border:1px solid var(--line);background:rgba(42,18,69,.6);color:var(--mute);font:600 14px/1 var(--f);padding:11px 16px;border-radius:99px;cursor:pointer}.tabs button.on{background:var(--paper);color:var(--night);border-color:transparent}
 .ab{display:flex;background:var(--night3);border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px;margin:4px 0 10px}
 .ab button{flex:1;border:0;background:transparent;color:var(--mute);font:600 14px/1.2 var(--f);padding:10px 8px;border-radius:10px;cursor:pointer}
 .ab button.on{background:var(--violet);color:var(--night2)}
@@ -77,9 +78,10 @@ footer img{width:30px;opacity:.9;display:block;margin:0 auto 8px}
 <div class="wrap">
   <section class="hero">
     <div class="kicker">Central de posts · @_augustofonte</div>
-    <h1>Fábrica de Histórias: <span>O Pequeno Príncipe</span></h1>
-    <p class="lead">Salve o vídeo, copie a legenda e poste. Cada post tem duas versões de texto para o teste A/B.</p>
-    <div class="ab" role="tablist">
+    <div class="tabs" id="tabs"></div>
+    <h1 id="h1"></h1>
+    <p class="lead" id="lead"></p>
+    <div class="ab" id="abBox" role="tablist">
       <button id="abA" class="on" type="button">A · Como eu fiz (aula)</button>
       <button id="abB" type="button">B · Contando a história</button>
     </div>
@@ -101,16 +103,21 @@ footer img{width:30px;opacity:.9;display:block;margin:0 auto 8px}
 const D=__DATA__;
 const $=s=>document.querySelector(s);
 const LS="central-af-v1";
-const st=JSON.parse(localStorage.getItem(LS)||'{"ab":"A","posted":{}}');
+const st=JSON.parse(localStorage.getItem(LS)||'{"ab":"A","posted":{}}');st.aba=st.aba||D.abas[0].id;
 const save=()=>localStorage.setItem(LS,JSON.stringify(st));
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const PL=["Instagram","TikTok","YouTube"];
 function ver(p){return p[st.ab]||p.A}
 function social(p){const v=ver(p);return v.social+(p.cred?"\n\n"+D.cred:"")+"\n\n"+v.tags.join(" ")}
 function render(){
+  const ABA=D.abas.find(a=>a.id===st.aba)||D.abas[0];
+  $("#tabs").innerHTML=D.abas.map(a=>`<button type="button" data-aba="${a.id}" class="${a.id===ABA.id?"on":""}">${esc(a.nome)}</button>`).join("");
+  $("#h1").innerHTML=ABA.titulo;$("#lead").textContent=ABA.lead;
+  $("#abBox").style.display=ABA.ab?"":"none";$("#abNote").style.display=ABA.ab?"":"none";
+  const LIST=D.posts.filter(p=>(p.aba||"fabrica")===ABA.id);
   $("#abA").classList.toggle("on",st.ab==="A");$("#abB").classList.toggle("on",st.ab==="B");
   $("#abNote").textContent=st.ab==="A"?"Versão A: mostra que foi feito com IA e chama para a aula (comenta HISTÓRIA).":"Versão B: só conta a história, sem falar de ferramenta.";
-  $("#lista").innerHTML=D.posts.map(p=>{
+  $("#lista").innerHTML=LIST.map(p=>{
     const v=ver(p),soB=!p.B&&st.ab==="B";
     const ps=st.posted[p.id]||{};
     const done=PL.some(k=>ps[k]);
@@ -121,13 +128,13 @@ function render(){
       <a class="dl" href="vid/${p.video}.mp4" download="${p.video}.mp4">⬇ Salvar vídeo</a><span class="size">${p.mb} MB</span>
       <div class="blk"><div class="bh"><span class="lbl">Legenda · Instagram e TikTok</span><button class="cp" data-c="social" data-id="${p.id}">Copiar</button></div>
         <div class="txt">${esc(v.social)}${p.cred?"\n\n"+esc(D.cred):""}\n\n<span class="tg">${esc(v.tags.join(" "))}</span></div></div>
-      <div class="blk"><div class="bh"><span class="lbl">YouTube · título</span><button class="cp" data-c="titulo" data-id="${p.id}">Copiar</button></div>
+      ${v.titulo?`<div class="blk"><div class="bh"><span class="lbl">YouTube · título</span><button class="cp" data-c="titulo" data-id="${p.id}">Copiar</button></div>
         <div class="txt">${esc(v.titulo)}</div>
         <div class="bh yt"><span class="lbl">YouTube · descrição</span><button class="cp" data-c="desc" data-id="${p.id}">Copiar</button></div>
-        <div class="txt">${esc(v.desc)}</div></div>
+        <div class="txt">${esc(v.desc)}</div></div>`:""}
       <div class="posted">${PL.map(k=>`<label class="${ps[k]?"on":""}"><input type="checkbox" data-id="${p.id}" data-k="${k}" ${ps[k]?"checked":""}>${k}</label>`).join("")}</div>
     </article>`}).join("");
-  const tot=D.posts.length,c=D.posts.filter(p=>PL.some(k=>(st.posted[p.id]||{})[k])).length;
+  const tot=LIST.length,c=LIST.filter(p=>PL.some(k=>(st.posted[p.id]||{})[k])).length;
   $("#pc").textContent=c;$("#pt").textContent=tot;$("#pb").style.width=(c/tot*100)+"%";
 }
 async function copiar(t){
@@ -135,6 +142,8 @@ async function copiar(t){
   const x=$("#toast");x.classList.add("on");clearTimeout(window._t);window._t=setTimeout(()=>x.classList.remove("on"),1400);
 }
 document.addEventListener("click",e=>{
+  const tb=e.target.closest("[data-aba]");
+  if(tb){st.aba=tb.dataset.aba;save();render();window.scrollTo(0,0);return}
   const b=e.target.closest(".cp");
   if(b){const p=D.posts.find(x=>x.id===b.dataset.id),v=ver(p);copiar(b.dataset.c==="social"?social(p):v[b.dataset.c]);b.classList.add("ok");b.textContent="Copiado ✓";setTimeout(()=>{b.classList.remove("ok");b.textContent="Copiar"},1600);return}
   const pl=e.target.closest(".play");
